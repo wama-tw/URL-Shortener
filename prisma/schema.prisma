@@ -10,5 +10,5 @@ datasource db {
 model urls {
   id           Int       @id @default(autoincrement()) @db.UnsignedInt
   original_url String?   @db.VarChar(255)
-  expireAt     DateTime? @db.Timestamp(0)
+  expire_at    DateTime? @db.Timestamp(0)
 }

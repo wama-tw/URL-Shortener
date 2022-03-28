@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "shorten your url",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "dotenv -e .env.development -- node index.js",
+    "test": "dotenv -e .env.test -- node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "Wama",
   "license": "ISC",
@@ -15,7 +17,15 @@
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^6.0.0",
+    "dotenv-cli": "^5.1.0",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15",
-    "prisma": "^3.11.0"
+    "prisma": "^3.11.0",
+    "supertest": "^6.2.2"
+  },
+  "jest": {
+    "testEnvironment": "jest-environment-node",
+    "transform": {}
   }
 }

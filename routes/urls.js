@@ -1,14 +1,14 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
 
 router.use(express.json());
 
-const controller = require('../controllers/UrlsController');
+import controller from "../controllers/UrlsController.js";
 
-router.post('/', controller.post);
+router.post("/", controller.post);
 
-router.put('/:id', controller.put);
+router.put("/:id", controller.put);
 
-router.delete('/:id', controller.delete);
+router.delete("/:id", controller.delete);
 
-module.exports = router;
+export default router;

@@ -1,7 +1,8 @@
-const { PrismaClient } = require('@prisma/client');
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
-module.exports = {
+export default {
   get: async (req, res) => {
     const id = parseInt(req.params.id, 10);
     const url = await prisma.urls.findUnique({
@@ -10,8 +11,8 @@ module.exports = {
 
     if (!url) return res.sendStatus(404);
 
-    if (new Date() > url.expireAt) return res.sendStatus(404);
+    if (new Date() > url.expire_at) return res.sendStatus(404);
 
     return res.redirect(url.original_url);
-  }
-}
+  },
+};

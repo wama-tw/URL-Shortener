@@ -1,13 +1,16 @@
-const express = require('express');
+import express from "express";
 const app = express();
-require('dotenv').config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const urls = require('./routes/urls');
-app.use('/api/urls', urls);
+import urls from "./routes/urls.js";
+app.use("/api/urls", urls);
 
-const redirect = require('./routes/redirect');
+import redirect from "./routes/redirect.js";
 app.use(redirect);
 
 app.listen(process.env.PORT, () => {
   console.log(`Listening on port ${process.env.PORT}...`);
 });
+
+export default app;

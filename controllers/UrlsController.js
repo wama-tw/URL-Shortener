@@ -1,18 +1,19 @@
-const { PrismaClient } = require('@prisma/client');
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
 
-module.exports = {
+export default {
   post: async (req, res) => {
     const newUrl = await prisma.urls.create({
       data: {
         original_url: req.body.url,
-        expireAt: new Date(Date.parse(req.body.expireAt))
-      }
+        expire_at: new Date(Date.parse(req.body.expireAt)),
+      },
     });
 
     return res.json({
-      "id": newUrl.id,
-      "shortUrl": `${req.protocol}://${req.hostname}:${process.env.PORT}/${newUrl.id}`
+      id: newUrl.id,
+      shortUrl: `${req.protocol}://${req.hostname}:${process.env.PORT}/${newUrl.id}`,
     });
   },
   put: async (req, res) => {
@@ -21,13 +22,13 @@ module.exports = {
       where: { id },
       data: {
         original_url: req.body.url,
-        expireAt: new Date(Date.parse(req.body.expireAt))
+        expire_at: new Date(Date.parse(req.body.expireAt)),
       },
     });
 
     return res.json({
-      "id": updatedUrl.id,
-      "shortUrl": `${req.protocol}://${req.hostname}:${process.env.PORT}/${updatedUrl.id}`
+      id: updatedUrl.id,
+      shortUrl: `${req.protocol}://${req.hostname}:${process.env.PORT}/${updatedUrl.id}`,
     });
   },
   delete: async (req, res) => {
@@ -37,5 +38,5 @@ module.exports = {
     });
 
     return res.json(deletedUrl);
-  }
+  },
 };

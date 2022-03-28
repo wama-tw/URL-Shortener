@@ -1,11 +1,10 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
 
 router.use(express.json());
 
-const controller = require('../controllers/RedirectController');
+import controller from "../controllers/RedirectController.js";
 
-router.get('/:id', controller.get);
+router.get("/:id", controller.get);
 
-
-module.exports = router;
+export default router;
