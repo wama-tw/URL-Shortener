@@ -1,8 +1,5 @@
 import request from "supertest";
-import app from "../index";
-import pkg from "@prisma/client";
-const { PrismaClient } = pkg;
-const prisma = new PrismaClient();
+import { server, app, prisma } from "../index";
 import { faker } from "@faker-js/faker";
 
 describe("RESTful api", () => {
@@ -26,7 +23,6 @@ describe("RESTful api", () => {
   });
 
   test("Update an exit shortUrl", async () => {
-    console.log(faker.date.past());
     const oldData = await prisma.urls.create({
       data: {
         original_url: faker.internet.url(),
@@ -55,7 +51,6 @@ describe("RESTful api", () => {
   });
 
   test("Delete an exit shortUrl", async () => {
-    console.log(faker.date.past());
     const oldData = await prisma.urls.create({
       data: {
         original_url: faker.internet.url(),
@@ -80,5 +75,5 @@ describe("RESTful api", () => {
 
 afterAll(async () => {
   await prisma.urls.deleteMany({});
-  await prisma.$disconnect();
+  server.close();
 });

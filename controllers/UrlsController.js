@@ -1,6 +1,4 @@
-import pkg from "@prisma/client";
-const { PrismaClient } = pkg;
-const prisma = new PrismaClient();
+import { prisma } from "../index.js";
 
 export default {
   post: async (req, res) => {
