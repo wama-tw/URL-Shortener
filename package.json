@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "dotenv -e .env.development -- node index.js",
-    "migrate:postgres": "dotenv -e .env.test -- npx prisma migrate dev --name postgres-init",
+    "migrate:postgres": "dotenv -e .env.development -- npx prisma migrate dev --name postgres-init",
+    "migrate:postgres:test": "dotenv -e .env.test -- npx prisma migrate dev --name postgres-init",
     "migrate:postgres:ci": "dotenv -e .env.ci -- npx prisma db push",
     "test": "dotenv -e .env.test -- node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test:ci": "dotenv -e .env.ci -- node --experimental-vm-modules node_modules/jest/bin/jest.js"
