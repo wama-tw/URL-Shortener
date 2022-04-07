@@ -29,7 +29,7 @@ npm install
 cp .env.example .env.development
 ```
 
-開啟 MySQL（可參考：https://hub.docker.com/_/mysql）
+開啟 MySQL（可參考：https://hub.docker.com/_/mysql)
 並修改 `.env.development`
 然後利用 migration 將 DB 建好
 
